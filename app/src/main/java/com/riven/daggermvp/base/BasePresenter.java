@@ -1,7 +1,5 @@
 package com.riven.daggermvp.base;
 
-import android.os.Bundle;
-
 /**
  * Description:
  * Author: djs

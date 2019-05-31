@@ -1,14 +1,10 @@
 package com.riven.daggermvp.base;
 
 /**
- *
- * Created by hzy on 2019/1/18
- *
- * BasePAV BasePersenter关联/取消关联BaseView
- *
- * @author Administrator
- *
- * */
+ * Description:Presenter与View的关联类
+ * Author: djs
+ * Date: 2019/5/28.
+ */
 public class BasePAV<T extends BaseView> implements BasePresenter<T> {
 
     protected T mView;

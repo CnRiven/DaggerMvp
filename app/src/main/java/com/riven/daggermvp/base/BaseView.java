@@ -25,9 +25,24 @@ public interface BaseView {
      */
     void showToast(String toastStr);
 
+    /**
+     * 跳转Activity
+     * @param activity
+     */
     void goPage(Class<? extends Activity> activity);
 
+    /**
+     * 跳转Activity
+     * @param activity
+     * @param bundle
+     */
     void goPage(Class<? extends Activity> activity, Bundle bundle);
 
+    /**
+     * 跳转Activity
+     * @param activity
+     * @param bundle
+     * @param requestCode
+     */
     void goPage(Class<? extends Activity> activity, Bundle bundle, int requestCode);
 }

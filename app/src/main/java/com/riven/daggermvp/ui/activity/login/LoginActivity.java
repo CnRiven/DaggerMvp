@@ -1,11 +1,9 @@
 package com.riven.daggermvp.ui.activity.login;
 
-import android.content.Intent;
 import android.widget.EditText;
 
 import com.riven.daggermvp.R;
 import com.riven.daggermvp.base.BaseActivity;
-import com.riven.daggermvp.ui.activity.main.MainActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -40,10 +38,5 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     @OnClick(R.id.btnLogin)
     public void onViewClicked() {
         mPresenter.postLogin(etUserName.getText().toString(), etPassWord.getText().toString());
-    }
-
-    @Override
-    public void goMainActivity() {
-        startActivity(new Intent(this, MainActivity.class));
     }
 }

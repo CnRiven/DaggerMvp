@@ -8,7 +8,8 @@
         android:id="@+id/etUserName"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:hint="请输入账号" />
+        android:hint="请输入账号"
+        android:text="dong_junshuai"/>
 
     <EditText
         android:id="@+id/etPassWord"
@@ -16,6 +17,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="15dp"
         android:hint="请输入密码"
+        android:text="dong1234"
         android:inputType="textPassword" />
 
     <Button

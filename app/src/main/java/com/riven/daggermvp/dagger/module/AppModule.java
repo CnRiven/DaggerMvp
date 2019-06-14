@@ -23,8 +23,15 @@ public class AppModule {
 
     @Provides
     @Singleton
+    App providesApplication(){
+        return application;
+    }
+
+    @Provides
+    @Singleton
     @ContextLife("Application")
     App provideApplicationContext() {
         return application;
     }
+
 }

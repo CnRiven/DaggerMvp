@@ -11,7 +11,6 @@ import com.riven.daggermvp.base.BaseView;
 public class LoginContract {
 
     interface View extends BaseView {
-        void goMainActivity();
     }
 
     interface Presenter extends BasePresenter<View> {

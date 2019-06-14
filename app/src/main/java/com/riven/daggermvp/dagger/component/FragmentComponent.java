@@ -10,7 +10,7 @@ import com.riven.daggermvp.ui.fragment.mine.MineFragment;
 import dagger.Component;
 
 /**
- * Description:
+ * Description: FragmentComponent
  * Author: djs
  * Date: 2019/5/28.
  */

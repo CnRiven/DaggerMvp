@@ -8,9 +8,10 @@ import com.riven.daggermvp.ui.activity.login.LoginActivity;
 import com.riven.daggermvp.ui.activity.main.MainActivity;
 
 import dagger.Component;
+import retrofit2.Retrofit;
 
 /**
- * Description:
+ * Description: ActivityComponent
  * Author: djs
  * Date: 2019/5/24.
  */
@@ -22,4 +23,7 @@ public interface ActivityComponent {
     void inject(MainActivity loginActivity);
 
     Activity getActivity();
+
+    Retrofit getRetrofit();
 }
+

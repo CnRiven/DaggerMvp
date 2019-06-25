@@ -1,6 +1,6 @@
 package com.riven.daggermvp.dagger.component;
 
-import com.riven.daggermvp.App;
+import com.riven.daggermvp.MyApp;
 import com.riven.daggermvp.dagger.module.AppModule;
 import com.riven.daggermvp.dagger.ContextLife;
 import com.riven.daggermvp.dagger.module.NetModule;
@@ -20,14 +20,14 @@ import retrofit2.Retrofit;
 @Component(modules = {AppModule.class, NetModule.class})
 public interface AppComponent {
 
-    App getApplication();
+    MyApp getApplication();
 
     /**
      * 提供App的Context
      * @return
      */
     @ContextLife("Application")
-    App getContext();
+    MyApp getContext();
 
     OkHttpClient getClient();
 

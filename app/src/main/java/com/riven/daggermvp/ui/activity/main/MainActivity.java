@@ -7,6 +7,7 @@ import android.widget.RadioGroup;
 
 import com.riven.daggermvp.R;
 import com.riven.daggermvp.base.BaseActivity;
+import com.riven.daggermvp.ui.fragment.article.ArticleFragment;
 import com.riven.daggermvp.ui.fragment.home.HomeFragment;
 import com.riven.daggermvp.ui.fragment.mine.MineFragment;
 
@@ -20,14 +21,17 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     RadioGroup radioGroup;
     @BindView(R.id.rdHome)
     RadioButton rdHome;
+    @BindView(R.id.rdArticle)
+    RadioButton rdArticle;
     @BindView(R.id.rdMine)
     RadioButton rdMine;
 
     private FragmentManager fragmentManager;
     private HomeFragment homeFragment;
+    private ArticleFragment articleFragment;
     private MineFragment mineFragment;
     //第一次进入默认为Home
-    private int currentTablIndex = R.id.rdHome;
+    private int currentTabIndex = R.id.rdHome;
 
     @Override
     protected int getLayout() {
@@ -44,10 +48,11 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
         radioGroup.setOnCheckedChangeListener(this);
         fragmentManager = getSupportFragmentManager();
         homeFragment = (HomeFragment) fragmentManager.findFragmentByTag(HomeFragment.class.getName());
+        articleFragment = (ArticleFragment) fragmentManager.findFragmentByTag(ArticleFragment.class.getName());
         mineFragment = (MineFragment) fragmentManager.findFragmentByTag(MineFragment.class.getName());
 
         //第一次进入，初始化页面
-        changeTabView(currentTablIndex);
+        changeTabView(currentTabIndex);
     }
 
     @Override
@@ -56,7 +61,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     }
 
     private void changeTabView(int checkedId) {
-        currentTablIndex = checkedId;
+        currentTabIndex = checkedId;
         //无论点击哪个，先把所有的都隐藏
         hideAll();
         switch (checkedId) {
@@ -67,6 +72,15 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
                 } else {
                     homeFragment = new HomeFragment();
                     fragmentManager.beginTransaction().add(R.id.frameLayout, homeFragment, HomeFragment.class.getName()).commit();
+                }
+                break;
+            case R.id.rdArticle:
+                rdArticle.setChecked(true);
+                if (articleFragment != null && articleFragment.isAdded()) {
+                    fragmentManager.beginTransaction().show(articleFragment).commit();
+                } else {
+                    articleFragment = new ArticleFragment();
+                    fragmentManager.beginTransaction().add(R.id.frameLayout, articleFragment, ArticleFragment.class.getName()).commit();
                 }
                 break;
             case R.id.rdMine:
@@ -89,6 +103,9 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     public void hideAll() {
         if (homeFragment != null) {
             fragmentManager.beginTransaction().hide(homeFragment).commit();
+        }
+        if (articleFragment != null) {
+            fragmentManager.beginTransaction().hide(articleFragment).commit();
         }
         if (mineFragment != null) {
             fragmentManager.beginTransaction().hide(mineFragment).commit();

@@ -1,6 +1,6 @@
 package com.riven.daggermvp.dagger.module;
 
-import com.riven.daggermvp.App;
+import com.riven.daggermvp.MyApp;
 import com.riven.daggermvp.config.Constants;
 import com.riven.daggermvp.net.HTTPSTools;
 import com.riven.daggermvp.net.interceptor.NetCheckInterceptor;
@@ -35,7 +35,7 @@ public class NetModule {
 
     @Provides
     @Singleton
-    public OkHttpClient providesOkHttpClient(App app, Cache cache){
+    public OkHttpClient providesOkHttpClient(MyApp myApp, Cache cache){
 
         OkHttpClient client = new OkHttpClient.Builder()
                 .addNetworkInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
@@ -46,8 +46,8 @@ public class NetModule {
                 .readTimeout(45, TimeUnit.SECONDS)
                 .writeTimeout(55, TimeUnit.SECONDS)
                 .cache(cache)
-                .sslSocketFactory(HTTPSTools.getSSLSocketFactoryValue(app,null),
-                        (X509TrustManager) HTTPSTools.getX509TrustManager(app,null)[0])
+                .sslSocketFactory(HTTPSTools.getSSLSocketFactoryValue(myApp,null),
+                        (X509TrustManager) HTTPSTools.getX509TrustManager(myApp,null)[0])
                 .hostnameVerifier(HTTPSTools.getHostnameVerifier(null))
                 .retryOnConnectionFailure(true) //请求失败，是否可以重试
                 .build();
@@ -70,7 +70,7 @@ public class NetModule {
 
     @Provides
     @Singleton
-    public Cache providesCache(App app){
-        return new Cache(app.getExternalCacheDir(), Constants.CACHE_SIZE);
+    public Cache providesCache(MyApp myApp){
+        return new Cache(myApp.getExternalCacheDir(), Constants.CACHE_SIZE);
     }
 }

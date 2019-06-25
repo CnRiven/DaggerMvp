@@ -1,6 +1,6 @@
 package com.riven.daggermvp.dagger.module;
 
-import com.riven.daggermvp.App;
+import com.riven.daggermvp.MyApp;
 import com.riven.daggermvp.dagger.ContextLife;
 
 import javax.inject.Singleton;
@@ -15,22 +15,22 @@ import dagger.Provides;
  */
 @Module
 public class AppModule {
-    private final App application;
+    private final MyApp application;
 
-    public AppModule(App application) {
+    public AppModule(MyApp application) {
         this.application = application;
     }
 
     @Provides
     @Singleton
-    App providesApplication(){
+    MyApp providesApplication(){
         return application;
     }
 
     @Provides
     @Singleton
     @ContextLife("Application")
-    App provideApplicationContext() {
+    MyApp provideApplicationContext() {
         return application;
     }
 

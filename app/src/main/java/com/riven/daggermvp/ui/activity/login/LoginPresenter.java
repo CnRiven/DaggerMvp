@@ -61,6 +61,7 @@ public class LoginPresenter extends BasePAV<LoginContract.View> implements Login
                             }
                         }
 
+
                         @Override
                         protected void dealError(Throwable ex, String toastText) {
                             mView.showToast(toastText);
@@ -70,8 +71,6 @@ public class LoginPresenter extends BasePAV<LoginContract.View> implements Login
 
         }
         mView.hideLoading();
-
-
     }
 
 }

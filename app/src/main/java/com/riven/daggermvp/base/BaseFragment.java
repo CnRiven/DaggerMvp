@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.kaopiz.kprogresshud.KProgressHUD;
-import com.riven.daggermvp.App;
+import com.riven.daggermvp.MyApp;
 import com.riven.daggermvp.dagger.component.DaggerFragmentComponent;
 import com.riven.daggermvp.dagger.component.FragmentComponent;
 import com.riven.daggermvp.dagger.module.FragmentModule;
@@ -64,7 +64,7 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
 
     protected FragmentComponent getFragmentComponent() {
         return DaggerFragmentComponent.builder()
-                .appComponent(App.getAppComponent())
+                .appComponent(MyApp.getAppComponent())
                 .fragmentModule(new FragmentModule(this))
                 .build();
     }

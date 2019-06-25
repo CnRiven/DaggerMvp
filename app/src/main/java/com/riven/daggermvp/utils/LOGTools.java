@@ -2,7 +2,7 @@ package com.riven.daggermvp.utils;
 
 import android.text.TextUtils;
 
-import com.riven.daggermvp.App;
+import com.riven.daggermvp.MyApp;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -21,7 +21,7 @@ import java.util.concurrent.Executors;
  * Date: 2017/12/21
  */
 public class LOGTools {
-    private static String path = App.getInstance().getExternalFilesDir("log").getAbsolutePath();
+    private static String path = MyApp.getInstance().getExternalFilesDir("log").getAbsolutePath();
     private static Executor singleThreadPool = Executors.newSingleThreadExecutor();
 
     public static void writeLog(final Throwable ex){

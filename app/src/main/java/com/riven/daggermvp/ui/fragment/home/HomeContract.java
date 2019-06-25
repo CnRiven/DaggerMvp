@@ -2,6 +2,9 @@ package com.riven.daggermvp.ui.fragment.home;
 
 import com.riven.daggermvp.base.BasePresenter;
 import com.riven.daggermvp.base.BaseView;
+import com.riven.daggermvp.bean.BannerBean;
+
+import java.util.List;
 
 /**
  * Description:
@@ -10,9 +13,9 @@ import com.riven.daggermvp.base.BaseView;
  */
 public class HomeContract  {
     interface View extends BaseView{
-
+        void showBanner(List<BannerBean> beanList);
     }
     interface Presenter extends BasePresenter<View>{
-        void showView(String str);
+        void getBannerData();
     }
 }

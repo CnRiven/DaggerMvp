@@ -4,12 +4,22 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <include layout="@layout/title" />
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="60dp"
+        android:src="@mipmap/icon" />
+
     <EditText
         android:id="@+id/etUserName"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginTop="30dp"
         android:hint="请输入账号"
-        android:text="dong_junshuai"/>
+        android:text="dong_junshuai" />
 
     <EditText
         android:id="@+id/etPassWord"
@@ -17,15 +27,16 @@
         android:layout_height="50dp"
         android:layout_marginTop="15dp"
         android:hint="请输入密码"
-        android:text="dong1234"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:text="dong1234" />
 
     <Button
         android:id="@+id/btnLogin"
-        android:text="登录"
-        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
-        android:layout_height="50dp" />
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/blue_66B3FF"
+        android:text="登录" />
 
 
 </LinearLayout>

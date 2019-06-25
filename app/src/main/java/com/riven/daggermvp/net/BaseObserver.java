@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
-import com.riven.daggermvp.App;
+import com.riven.daggermvp.MyApp;
 import com.riven.daggermvp.ui.activity.login.LoginActivity;
 import com.riven.daggermvp.utils.AAM;
 import com.riven.daggermvp.utils.LogUtil;
@@ -45,7 +45,7 @@ public abstract class BaseObserver<T> implements Observer<T> {
             LogUtil.e("----" + responseBean.toString());
             if (HttpCode.TOKEN_NOT_VAILD == responseBean.getErrorCode()){
                 AAM.getInstance().finishActivity(LoginActivity.class);
-                Intent mIntent = new Intent(App.getInstance(), LoginActivity.class);
+                Intent mIntent = new Intent(MyApp.getInstance(), LoginActivity.class);
                 mActivity.startActivity(mIntent);
                 return;
             }

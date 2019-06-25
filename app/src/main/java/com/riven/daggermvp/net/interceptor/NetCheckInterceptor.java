@@ -1,6 +1,6 @@
 package com.riven.daggermvp.net.interceptor;
 
-import com.riven.daggermvp.App;
+import com.riven.daggermvp.MyApp;
 import com.riven.daggermvp.utils.AppNetworkTools;
 
 import java.io.IOException;
@@ -17,7 +17,7 @@ import okhttp3.Response;
 public class NetCheckInterceptor implements Interceptor {
     @Override
     public Response intercept(Chain chain) throws IOException {
-        if (!AppNetworkTools.isNetworkConnected(App.getInstance())){
+        if (!AppNetworkTools.isNetworkConnected(MyApp.getInstance())){
             throw new UnknownHostException("no network is connected");
         }
         return chain.proceed(chain.request().newBuilder().build());

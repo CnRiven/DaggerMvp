@@ -7,7 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import com.kaopiz.kprogresshud.KProgressHUD;
-import com.riven.daggermvp.App;
+import com.riven.daggermvp.MyApp;
 import com.riven.daggermvp.dagger.component.ActivityComponent;
 import com.riven.daggermvp.dagger.component.DaggerActivityComponent;
 import com.riven.daggermvp.dagger.module.ActivityModule;
@@ -46,7 +46,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
 
     protected ActivityComponent getActivityComponent() {
         return DaggerActivityComponent.builder()
-                .appComponent(App.getAppComponent())
+                .appComponent(MyApp.getAppComponent())
                 .activityModule(new ActivityModule(this))
                 .build();
     }

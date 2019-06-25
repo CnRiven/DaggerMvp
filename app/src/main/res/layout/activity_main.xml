@@ -15,7 +15,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/line" />
+        android:background="@color/line_dbdbdb" />
 
     <RadioGroup
         android:id="@+id/radioGroup"
@@ -40,7 +40,7 @@
         <View
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:background="@color/line" />
+            android:background="@color/line_dbdbdb" />
 
         <RadioButton
             android:id="@+id/rdArticle"
@@ -58,7 +58,7 @@
         <View
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:background="@color/line" />
+            android:background="@color/line_dbdbdb" />
 
         <RadioButton
             android:id="@+id/rdMine"

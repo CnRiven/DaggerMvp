@@ -1,6 +1,9 @@
 package com.riven.daggermvp.ui.activity.login;
 
+import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.riven.daggermvp.R;
 import com.riven.daggermvp.base.BaseActivity;
@@ -15,6 +18,10 @@ import butterknife.OnClick;
  */
 public class LoginActivity extends BaseActivity<LoginPresenter> implements LoginContract.View {
 
+    @BindView(R.id.llBack)
+    LinearLayout llBack;
+    @BindView(R.id.tvTitle)
+    TextView tvTitle;
     @BindView(R.id.etUserName)
     EditText etUserName;
     @BindView(R.id.etPassWord)
@@ -32,11 +39,17 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
 
     @Override
     protected void initViewAndData() {
-
+        llBack.setVisibility(View.GONE);
+        tvTitle.setText("登录");
     }
 
-    @OnClick(R.id.btnLogin)
-    public void onViewClicked() {
-        mPresenter.postLogin(etUserName.getText().toString(), etPassWord.getText().toString());
+    @OnClick({R.id.btnLogin})
+    public void onViewClicked(View view) {
+        switch (view.getId()){
+            case R.id.btnLogin:
+                mPresenter.postLogin(etUserName.getText().toString(), etPassWord.getText().toString());
+                break;
+        }
+
     }
 }

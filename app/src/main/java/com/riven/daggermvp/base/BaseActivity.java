@@ -11,6 +11,7 @@ import com.riven.daggermvp.MyApp;
 import com.riven.daggermvp.dagger.component.ActivityComponent;
 import com.riven.daggermvp.dagger.component.DaggerActivityComponent;
 import com.riven.daggermvp.dagger.module.ActivityModule;
+import com.riven.daggermvp.ui.activity.web.WebActivity;
 import com.riven.daggermvp.utils.MyToast;
 
 import javax.inject.Inject;
@@ -75,6 +76,13 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         Intent intent = new Intent(this, activity);
         intent.putExtra("bundle", bundle);
         startActivityForResult(intent, requestCode);
+    }
+
+    @Override
+    public void goWebPage(Bundle bundle) {
+        Intent intent = new Intent(this, WebActivity.class);
+        intent.putExtra("bundle", bundle);
+        startActivity(intent);
     }
 
     @Override

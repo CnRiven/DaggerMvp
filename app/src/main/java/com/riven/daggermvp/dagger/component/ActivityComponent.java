@@ -6,6 +6,7 @@ import com.riven.daggermvp.dagger.module.ActivityModule;
 import com.riven.daggermvp.dagger.scope.ActivityScope;
 import com.riven.daggermvp.ui.activity.login.LoginActivity;
 import com.riven.daggermvp.ui.activity.main.MainActivity;
+import com.riven.daggermvp.ui.activity.web.WebActivity;
 
 import dagger.Component;
 import retrofit2.Retrofit;
@@ -21,6 +22,7 @@ public interface ActivityComponent {
 
     void inject(LoginActivity loginActivity);
     void inject(MainActivity loginActivity);
+    void inject(WebActivity webActivity);
 
     Activity getActivity();
 

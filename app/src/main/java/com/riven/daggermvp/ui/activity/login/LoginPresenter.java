@@ -31,19 +31,19 @@ public class LoginPresenter extends BasePAV<LoginContract.View> implements Login
 
     @Override
     public void postLogin(String username, String password) {
-        mView.showLoading();
         if (TextUtils.isEmpty(username)) {
             mView.showToast("账号不能为空");
         } else if (TextUtils.isEmpty(password)) {
             mView.showToast("密码不能为空");
         } else {
+            mView.showLoading();
             retrofitUtils.postLogin(username, password)
                     .compose(new SchedulersTransformer<ResponseBean<LoginBean>>())
                     .subscribe(new BaseObserver<ResponseBean<LoginBean>>() {
 
                         @Override
                         public void onSubscribe(Disposable d) {
-                            mView.showLoading();
+
                         }
 
                         @Override
@@ -59,8 +59,8 @@ public class LoginPresenter extends BasePAV<LoginContract.View> implements Login
                             } else {
                                 mView.showToast(loginBeanResponseBean.getErrorMsg());
                             }
-                        }
 
+                        }
 
                         @Override
                         protected void dealError(Throwable ex, String toastText) {
@@ -70,7 +70,6 @@ public class LoginPresenter extends BasePAV<LoginContract.View> implements Login
                     });
 
         }
-        mView.hideLoading();
     }
 
 }

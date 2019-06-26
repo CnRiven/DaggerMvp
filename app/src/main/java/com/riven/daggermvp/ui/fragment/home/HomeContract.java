@@ -3,6 +3,7 @@ package com.riven.daggermvp.ui.fragment.home;
 import com.riven.daggermvp.base.BasePresenter;
 import com.riven.daggermvp.base.BaseView;
 import com.riven.daggermvp.bean.BannerBean;
+import com.riven.daggermvp.bean.NewProjectBean;
 
 import java.util.List;
 
@@ -14,8 +15,10 @@ import java.util.List;
 public class HomeContract  {
     interface View extends BaseView{
         void showBanner(List<BannerBean> beanList);
+        void showNewProject(List<NewProjectBean.DatasBean> datasBeanList);
     }
     interface Presenter extends BasePresenter<View>{
         void getBannerData();
+        void getNewProject();
     }
 }

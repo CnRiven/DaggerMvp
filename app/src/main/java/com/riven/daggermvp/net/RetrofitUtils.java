@@ -2,6 +2,7 @@ package com.riven.daggermvp.net;
 
 import com.riven.daggermvp.bean.BannerBean;
 import com.riven.daggermvp.bean.LoginBean;
+import com.riven.daggermvp.bean.NewProjectBean;
 import com.riven.daggermvp.net.apiservice.AccountApiService;
 import com.riven.daggermvp.net.apiservice.HomeApiService;
 
@@ -44,5 +45,13 @@ public class RetrofitUtils {
      */
     public Observable<ResponseBean<List<BannerBean>>> getBannerData(){
         return homeApiService.getBannerData();
+    }
+
+    /**
+     * 获取 最新项目
+     * @return
+     */
+    public Observable<ResponseBean<NewProjectBean>> getNewProjectData(){
+        return homeApiService.getNewProjectData();
     }
 }

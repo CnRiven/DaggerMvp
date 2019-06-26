@@ -1,6 +1,7 @@
 package com.riven.daggermvp.net.apiservice;
 
 import com.riven.daggermvp.bean.BannerBean;
+import com.riven.daggermvp.bean.NewProjectBean;
 import com.riven.daggermvp.net.ResponseBean;
 
 import java.util.List;
@@ -17,5 +18,8 @@ public interface HomeApiService {
 
     @GET("/banner/json")
     Observable<ResponseBean<List<BannerBean>>> getBannerData();
+
+    @GET("/article/listproject/0/json")
+    Observable<ResponseBean<NewProjectBean>> getNewProjectData();
 
 }

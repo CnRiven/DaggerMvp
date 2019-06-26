@@ -1,26 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="@color/blue_66B3FF"
-    android:layout_height="50dp">
+    android:layout_height="50dp"
+    android:background="@color/blue_66B3FF">
 
     <LinearLayout
         android:id="@+id/llBack"
-        android:padding="10dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
         <ImageView
-            android:src="@mipmap/back"
             android:layout_width="30dp"
-            android:layout_height="30dp" />
+            android:layout_height="30dp"
+            android:src="@mipmap/back" />
     </LinearLayout>
 
     <TextView
         android:id="@+id/tvTitle"
-        android:layout_centerInParent="true"
-        android:gravity="center"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
+        android:gravity="center"
+        android:lines="1" />
 
 
 </RelativeLayout>

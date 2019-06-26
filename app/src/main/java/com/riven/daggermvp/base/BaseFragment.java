@@ -15,6 +15,7 @@ import com.riven.daggermvp.MyApp;
 import com.riven.daggermvp.dagger.component.DaggerFragmentComponent;
 import com.riven.daggermvp.dagger.component.FragmentComponent;
 import com.riven.daggermvp.dagger.module.FragmentModule;
+import com.riven.daggermvp.ui.activity.web.WebActivity;
 import com.riven.daggermvp.utils.MyToast;
 
 import javax.inject.Inject;
@@ -87,6 +88,13 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
         Intent intent = new Intent(getActivity(), activity);
         intent.putExtra("bundle", bundle);
         startActivityForResult(intent, requestCode);
+    }
+
+    @Override
+    public void goWebPage(Bundle bundle) {
+        Intent intent = new Intent(getActivity(), WebActivity.class);
+        intent.putExtra("bundle", bundle);
+        startActivity(intent);
     }
 
     @Override

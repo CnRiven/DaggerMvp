@@ -45,4 +45,10 @@ public interface BaseView {
      * @param requestCode
      */
     void goPage(Class<? extends Activity> activity, Bundle bundle, int requestCode);
+
+    /**
+     * 跳转到WebActivity
+     * @param bundle
+     */
+    void goWebPage(Bundle bundle);
 }

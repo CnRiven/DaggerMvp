@@ -6,4 +6,6 @@
 
     <color name="line_dbdbdb">#dbdbdb</color>
     <color name="blue_66B3FF">#66B3FF</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
 </resources>

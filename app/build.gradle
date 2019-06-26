@@ -73,4 +73,7 @@ dependencies {
 
     //鸿洋万能Adapter
     implementation 'com.zhy:base-rvadapter:3.0.3'
+
+    //WebView  https://github.com/Justson/AgentWeb
+    api 'com.just.agentweb:agentweb:4.0.3-beta'
 }

@@ -14,11 +14,12 @@ import java.util.List;
  */
 public class HomeContract  {
     interface View extends BaseView{
+        void setLoadMoreEnable(boolean isLoadMore);
         void showBanner(List<BannerBean> beanList);
         void showNewProject(List<NewProjectBean.DatasBean> datasBeanList);
     }
     interface Presenter extends BasePresenter<View>{
         void getBannerData();
-        void getNewProject();
+        void getNewProject(int page);
     }
 }

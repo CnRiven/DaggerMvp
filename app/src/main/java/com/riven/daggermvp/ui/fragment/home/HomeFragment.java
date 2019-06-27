@@ -3,7 +3,9 @@ package com.riven.daggermvp.ui.fragment.home;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.riven.daggermvp.R;
@@ -12,6 +14,10 @@ import com.riven.daggermvp.bean.BannerBean;
 import com.riven.daggermvp.bean.NewProjectBean;
 import com.riven.daggermvp.utils.GlideApp;
 import com.riven.daggermvp.utils.GlideImageLoader;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.listener.OnBannerListener;
@@ -22,18 +28,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * Description:首页
  * Author: djs
  * Date: 2019/5/28.
  */
-public class HomeFragment extends BaseFragment<HomePresenter> implements HomeContract.View {
+public class HomeFragment extends BaseFragment<HomePresenter> implements HomeContract.View, OnRefreshListener,OnLoadmoreListener {
 
     @BindView(R.id.banner)
     Banner banner;
     @BindView(R.id.rcHome)
     RecyclerView rcHome;
+    @BindView(R.id.refreshLayout)
+    SmartRefreshLayout refreshLayout;
+    Unbinder unbinder;
+
+    //最新文章默认加载第0页
+    private int page = 0;
 
     private CommonAdapter<NewProjectBean.DatasBean> adapter;
     private List<NewProjectBean.DatasBean> projectBeanList = new ArrayList<>();
@@ -50,11 +64,15 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
 
     @Override
     protected void initEventAndData() {
+        refreshLayout.setEnableRefresh(true);
+        refreshLayout.setEnableLoadmore(false);
+        refreshLayout.setOnRefreshListener(this);
+        refreshLayout.setOnLoadmoreListener(this);
         initViewBanner();
         initAdapter();
         initRecyclerView();
         mPresenter.getBannerData();
-        mPresenter.getNewProject();
+        mPresenter.getNewProject(page);
     }
 
     private void initAdapter() {
@@ -62,6 +80,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
             @Override
             protected void convert(ViewHolder holder, final NewProjectBean.DatasBean datasBean, int position) {
                 holder.setText(R.id.title, datasBean.getTitle());
+
                 ImageView imageView = holder.getView(R.id.img);
                 GlideApp.with(getActivity())
                         .load(datasBean.getEnvelopePic())
@@ -78,6 +97,8 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
                         goWebPage(bundle);
                     }
                 });
+                refreshLayout.finishLoadmore();
+                refreshLayout.finishRefresh();
             }
         };
     }
@@ -96,6 +117,13 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
     private void initRecyclerView() {
         rcHome.setLayoutManager(new LinearLayoutManager(getActivity()));
         rcHome.setAdapter(adapter);
+    }
+
+    @Override
+    public void setLoadMoreEnable(boolean isLoadMore) {
+        if (isLoadMore){
+            refreshLayout.setEnableLoadmore(isLoadMore);
+        }
     }
 
     @Override
@@ -122,11 +150,26 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
         adapter.notifyDataSetChanged();
     }
 
+
+
+    @Override
+    public void onRefresh(RefreshLayout refreshlayout) {
+        page = 0;
+        mPresenter.getBannerData();
+        mPresenter.getNewProject(page);
+
+    }
+
+    @Override
+    public void onLoadmore(RefreshLayout refreshlayout) {
+        page++;
+        mPresenter.getNewProject(page);
+    }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         projectBeanList = null;
+        unbinder.unbind();
     }
-
-
 }

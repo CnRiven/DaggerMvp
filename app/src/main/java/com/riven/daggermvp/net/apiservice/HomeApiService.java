@@ -8,6 +8,7 @@ import java.util.List;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 
 /**
  * Description:
@@ -19,7 +20,7 @@ public interface HomeApiService {
     @GET("/banner/json")
     Observable<ResponseBean<List<BannerBean>>> getBannerData();
 
-    @GET("/article/listproject/0/json")
-    Observable<ResponseBean<NewProjectBean>> getNewProjectData();
+    @GET("/article/listproject/{page}/json")
+    Observable<ResponseBean<NewProjectBean>> getNewProjectData(@Path("page") int page);
 
 }

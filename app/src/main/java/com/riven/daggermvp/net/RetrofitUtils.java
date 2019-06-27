@@ -51,7 +51,7 @@ public class RetrofitUtils {
      * 获取 最新项目
      * @return
      */
-    public Observable<ResponseBean<NewProjectBean>> getNewProjectData(){
-        return homeApiService.getNewProjectData();
+    public Observable<ResponseBean<NewProjectBean>> getNewProjectData(int page){
+        return homeApiService.getNewProjectData(page);
     }
 }

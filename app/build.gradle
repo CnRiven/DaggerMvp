@@ -76,4 +76,7 @@ dependencies {
 
     //WebView  https://github.com/Justson/AgentWeb
     api 'com.just.agentweb:agentweb:4.0.3-beta'
+
+    //下拉刷新
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.3'
 }

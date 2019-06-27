@@ -30,8 +30,8 @@ public class HomePresenter extends BasePAV<HomeContract.View> implements HomeCon
     public HomePresenter() {
     }
 
-    private void pageHide(){
-        if (loadingFlag == 0){
+    private void pageHide() {
+        if (loadingFlag == 0) {
             mView.hideLoading();
         }
     }
@@ -75,17 +75,24 @@ public class HomePresenter extends BasePAV<HomeContract.View> implements HomeCon
      * 获取最新项目
      */
     @Override
-    public void getNewProject() {
-        retrofitUtils.getNewProjectData()
+    public void getNewProject(int page) {
+        retrofitUtils.getNewProjectData(page)
                 .compose(new SchedulersTransformer<ResponseBean<NewProjectBean>>())
                 .subscribe(new BaseObserver<ResponseBean<NewProjectBean>>() {
                     @Override
                     protected void dealNext(ResponseBean<NewProjectBean> listResponseBean) {
-                        if (null != listResponseBean){
+                        if (null != listResponseBean) {
                             NewProjectBean data = listResponseBean.getData();
-                            if (null != data){
+                            if (null != data) {
+
+                                if (data.getCurPage() < data.getPageCount()) {
+                                    mView.setLoadMoreEnable(true);
+                                } else {
+                                    mView.setLoadMoreEnable(false);
+                                }
+
                                 List<NewProjectBean.DatasBean> datas = data.getDatas();
-                                if (datas != null && datas.size() > 0){
+                                if (datas != null && datas.size() > 0) {
                                     mView.showNewProject(datas);
                                     loadingFlag--;
                                     pageHide();
